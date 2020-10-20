@@ -9,3 +9,7 @@ pytz==2020.1
 sqlparse==0.3.1
 whitenoise==5.2.0
 pre-commit==2.7.1
+black
+flake8
+coverage
+coveralls
