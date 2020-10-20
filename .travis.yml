@@ -1,10 +1,20 @@
+
 language: python
+
 python:
-  - "3.6"      # current default Python on Travis CI
-  - "3.7"
-# command to install dependencies
-iinstall:
+  - 3.7
+
+install:
   - pip install -r requirements.txt
-# command to run tests
+
+before_script:
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
+
 script:
-  - python3 manage.py
+  - black --check .
+  - flake8 .
+  - coverage run --source=polls manage.py test
+
+after_script:
+  - coveralls
