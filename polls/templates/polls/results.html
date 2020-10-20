@@ -1,0 +1,26 @@
+
+
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<div class="span6">
+
+
+
+<h5>{{ question.question_text }}</h5>
+
+<ul>
+{% for choice in question.choice_set.all %}
+   <strong>{{ choice.choice_text }}<strong><span class="pull-right">{{ choice.votes }} vote{{ choice.votes|pluralize }} </span>
+  <div class="progress progress-danger active">
+      <div class="bar" style="width: {{ choice.votes }}%;"></div>
+  </div>
+{% endfor %}
+</ul>
+<p>
+<a class="btn btn-large btn-success" href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</p>
+</div>
