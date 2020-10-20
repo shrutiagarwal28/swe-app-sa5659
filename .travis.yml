@@ -7,6 +7,4 @@ iinstall:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - python3 manage.py test polls
-  - python manage.py makemigrations
-  - python manage.py migrate
+  - python3 manage.py
