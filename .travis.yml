@@ -12,9 +12,7 @@ before_script:
   - python manage.py collectstatic --noinput
 
 script:
-  - black *.py --check .
-  - black polls/*.py --check .
-  - black mysite/*.py --check .
+  - black --check .
   - flake8 .
   - coverage run --source=polls manage.py test
 
